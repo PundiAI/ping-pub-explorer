@@ -10067,25 +10067,27 @@ Use Chrome, Firefox or Internet Explorer 11`);
   }
   return browser$d.exports;
 }
-var inherits_browser$1 = { exports: {} };
-typeof Object.create == "function" ? inherits_browser$1.exports = function(n, o) {
-  o && (n.super_ = o, n.prototype = Object.create(o.prototype, {
-    constructor: {
-      value: n,
-      enumerable: !1,
-      writable: !0,
-      configurable: !0
+var inherits_browser$1 = { exports: {} }, hasRequiredInherits_browser;
+function requireInherits_browser() {
+  return hasRequiredInherits_browser || (hasRequiredInherits_browser = 1, typeof Object.create == "function" ? inherits_browser$1.exports = function(n, o) {
+    o && (n.super_ = o, n.prototype = Object.create(o.prototype, {
+      constructor: {
+        value: n,
+        enumerable: !1,
+        writable: !0,
+        configurable: !0
+      }
+    }));
+  } : inherits_browser$1.exports = function(n, o) {
+    if (o) {
+      n.super_ = o;
+      var d = function() {
+      };
+      d.prototype = o.prototype, n.prototype = new d(), n.prototype.constructor = n;
     }
-  }));
-} : inherits_browser$1.exports = function(n, o) {
-  if (o) {
-    n.super_ = o;
-    var d = function() {
-    };
-    d.prototype = o.prototype, n.prototype = new d(), n.prototype.constructor = n;
-  }
-};
-var inherits_browserExports = inherits_browser$1.exports, readableBrowser = { exports: {} }, events$2 = { exports: {} }, R = typeof Reflect == "object" ? Reflect : null, ReflectApply = R && typeof R.apply == "function" ? R.apply : function(n, o, d) {
+  }), inherits_browser$1.exports;
+}
+var readableBrowser = { exports: {} }, events$2 = { exports: {} }, R = typeof Reflect == "object" ? Reflect : null, ReflectApply = R && typeof R.apply == "function" ? R.apply : function(n, o, d) {
   return Function.prototype.apply.call(n, o, d);
 }, ReflectOwnKeys;
 R && typeof R.ownKeys == "function" ? ReflectOwnKeys = R.ownKeys : Object.getOwnPropertySymbols ? ReflectOwnKeys = function(n) {
@@ -10664,7 +10666,7 @@ function require_stream_writable() {
     return u.isBuffer(Le) || Le instanceof c;
   }
   var M = requireDestroy(), O = requireState(), D = O.getHighWaterMark, H = requireErrorsBrowser().codes, N = H.ERR_INVALID_ARG_TYPE, b = H.ERR_METHOD_NOT_IMPLEMENTED, U = H.ERR_MULTIPLE_CALLBACK, $ = H.ERR_STREAM_CANNOT_PIPE, F = H.ERR_STREAM_DESTROYED, E = H.ERR_STREAM_NULL_VALUES, q = H.ERR_STREAM_WRITE_AFTER_END, X = H.ERR_UNKNOWN_ENCODING, W = M.errorOrDestroy;
-  inherits_browserExports(ie, d);
+  requireInherits_browser()(ie, d);
   function ue() {
   }
   function L(Le, je, Ut) {
@@ -10885,7 +10887,7 @@ function require_stream_duplex() {
   };
   _stream_duplex = y;
   var n = require_stream_readable(), o = require_stream_writable();
-  inherits_browserExports(y, n);
+  requireInherits_browser()(y, n);
   for (var d = e(o.prototype), u = 0; u < d.length; u++) {
     var c = d[u];
     y.prototype[c] || (y.prototype[c] = o.prototype[c]);
@@ -11311,7 +11313,7 @@ function require_stream_readable() {
   I && I.debuglog ? M = I.debuglog("stream") : M = function() {
   };
   var O = requireBuffer_list(), D = requireDestroy(), H = requireState(), N = H.getHighWaterMark, b = requireErrorsBrowser().codes, U = b.ERR_INVALID_ARG_TYPE, $ = b.ERR_STREAM_PUSH_AFTER_EOF, F = b.ERR_METHOD_NOT_IMPLEMENTED, E = b.ERR_STREAM_UNSHIFT_AFTER_END_EVENT, q, X, W;
-  inherits_browserExports(te, o);
+  requireInherits_browser()(te, o);
   var ue = D.errorOrDestroy, L = ["error", "close", "destroy", "pause", "resume"];
   function ee(rn, vt, st) {
     if (typeof rn.prependListener == "function")
@@ -11643,7 +11645,7 @@ function require_stream_transform() {
     return _stream_transform;
   hasRequired_stream_transform = 1, _stream_transform = I;
   var e = requireErrorsBrowser().codes, n = e.ERR_METHOD_NOT_IMPLEMENTED, o = e.ERR_MULTIPLE_CALLBACK, d = e.ERR_TRANSFORM_ALREADY_TRANSFORMING, u = e.ERR_TRANSFORM_WITH_LENGTH_0, c = require_stream_duplex();
-  inherits_browserExports(I, c);
+  requireInherits_browser()(I, c);
   function y(D, H) {
     var N = this._transformState;
     N.transforming = !1;
@@ -11707,7 +11709,7 @@ function require_stream_passthrough() {
     return _stream_passthrough;
   hasRequired_stream_passthrough = 1, _stream_passthrough = n;
   var e = require_stream_transform();
-  inherits_browserExports(n, e);
+  requireInherits_browser()(n, e);
   function n(o) {
     if (!(this instanceof n))
       return new n(o);
@@ -11797,7 +11799,7 @@ function requireHashBase() {
   if (hasRequiredHashBase)
     return hashBase;
   hasRequiredHashBase = 1;
-  var e = requireSafeBuffer().Buffer, n = requireReadableBrowser().Transform, o = inherits_browserExports;
+  var e = requireSafeBuffer().Buffer, n = requireReadableBrowser().Transform, o = requireInherits_browser();
   function d(c, y) {
     if (!e.isBuffer(c) && typeof c != "string")
       throw new TypeError(y + " must be a string or a buffer");
@@ -11855,7 +11857,7 @@ function requireMd5_js() {
   if (hasRequiredMd5_js)
     return md5_js;
   hasRequiredMd5_js = 1;
-  var e = inherits_browserExports, n = requireHashBase(), o = requireSafeBuffer().Buffer, d = new Array(16);
+  var e = requireInherits_browser(), n = requireHashBase(), o = requireSafeBuffer().Buffer, d = new Array(16);
   function u() {
     n.call(this, 64), this._a = 1732584193, this._b = 4023233417, this._c = 2562383102, this._d = 271733878;
   }
@@ -11891,7 +11893,7 @@ function requireRipemd160() {
   if (hasRequiredRipemd160)
     return ripemd160$9;
   hasRequiredRipemd160 = 1;
-  var e = buffer$1.Buffer, n = inherits_browserExports, o = requireHashBase(), d = new Array(16), u = [
+  var e = buffer$1.Buffer, n = requireInherits_browser(), o = requireHashBase(), d = new Array(16), u = [
     0,
     1,
     2,
@@ -12292,7 +12294,7 @@ function requireSha() {
   if (hasRequiredSha)
     return sha$9;
   hasRequiredSha = 1;
-  var e = inherits_browserExports, n = requireHash(), o = requireSafeBuffer().Buffer, d = [
+  var e = requireInherits_browser(), n = requireHash(), o = requireSafeBuffer().Buffer, d = [
     1518500249,
     1859775393,
     -1894007588,
@@ -12333,7 +12335,7 @@ function requireSha1() {
   if (hasRequiredSha1)
     return sha1;
   hasRequiredSha1 = 1;
-  var e = inherits_browserExports, n = requireHash(), o = requireSafeBuffer().Buffer, d = [
+  var e = requireInherits_browser(), n = requireHash(), o = requireSafeBuffer().Buffer, d = [
     1518500249,
     1859775393,
     -1894007588,
@@ -12377,7 +12379,7 @@ function requireSha256() {
   if (hasRequiredSha256)
     return sha256$a;
   hasRequiredSha256 = 1;
-  var e = inherits_browserExports, n = requireHash(), o = requireSafeBuffer().Buffer, d = [
+  var e = requireInherits_browser(), n = requireHash(), o = requireSafeBuffer().Buffer, d = [
     1116352408,
     1899447441,
     3049323471,
@@ -12487,7 +12489,7 @@ function requireSha224() {
   if (hasRequiredSha224)
     return sha224$1;
   hasRequiredSha224 = 1;
-  var e = inherits_browserExports, n = requireSha256(), o = requireHash(), d = requireSafeBuffer().Buffer, u = new Array(64);
+  var e = requireInherits_browser(), n = requireSha256(), o = requireHash(), d = requireSafeBuffer().Buffer, u = new Array(64);
   function c() {
     this.init(), this._w = u, o.call(this, 64, 56);
   }
@@ -12503,7 +12505,7 @@ function requireSha512() {
   if (hasRequiredSha512)
     return sha512$9;
   hasRequiredSha512 = 1;
-  var e = inherits_browserExports, n = requireHash(), o = requireSafeBuffer().Buffer, d = [
+  var e = requireInherits_browser(), n = requireHash(), o = requireSafeBuffer().Buffer, d = [
     1116352408,
     3609767458,
     1899447441,
@@ -12728,7 +12730,7 @@ function requireSha384() {
   if (hasRequiredSha384)
     return sha384$1;
   hasRequiredSha384 = 1;
-  var e = inherits_browserExports, n = requireSha512(), o = requireHash(), d = requireSafeBuffer().Buffer, u = new Array(160);
+  var e = requireInherits_browser(), n = requireSha512(), o = requireHash(), d = requireSafeBuffer().Buffer, u = new Array(160);
   function c() {
     this.init(), this._w = u, o.call(this, 128, 112);
   }
@@ -12761,7 +12763,7 @@ function requireStreamBrowserify() {
   if (hasRequiredStreamBrowserify)
     return streamBrowserify;
   hasRequiredStreamBrowserify = 1, streamBrowserify = o;
-  var e = eventsExports.EventEmitter, n = inherits_browserExports;
+  var e = eventsExports.EventEmitter, n = requireInherits_browser();
   n(o, e), o.Readable = require_stream_readable(), o.Writable = require_stream_writable(), o.Duplex = require_stream_duplex(), o.Transform = require_stream_transform(), o.PassThrough = require_stream_passthrough(), o.finished = requireEndOfStream(), o.pipeline = requirePipeline(), o.Stream = o;
   function o() {
     e.call(this);
@@ -12799,7 +12801,7 @@ function requireCipherBase() {
   if (hasRequiredCipherBase)
     return cipherBase;
   hasRequiredCipherBase = 1;
-  var e = requireSafeBuffer().Buffer, n = requireStreamBrowserify().Transform, o = requireString_decoder().StringDecoder, d = inherits_browserExports;
+  var e = requireSafeBuffer().Buffer, n = requireStreamBrowserify().Transform, o = requireString_decoder().StringDecoder, d = requireInherits_browser();
   function u(c) {
     n.call(this), this.hashMode = typeof c == "string", this.hashMode ? this[c] = this._finalOrDigest : this.final = this._finalOrDigest, this._final && (this.__final = this._final, this._final = null), this._decoder = null, this._encoding = null;
   }
@@ -12846,7 +12848,7 @@ function requireBrowser$9() {
   if (hasRequiredBrowser$9)
     return browser$b;
   hasRequiredBrowser$9 = 1;
-  var e = inherits_browserExports, n = requireMd5_js(), o = requireRipemd160(), d = requireSha_js(), u = requireCipherBase();
+  var e = requireInherits_browser(), n = requireMd5_js(), o = requireRipemd160(), d = requireSha_js(), u = requireCipherBase();
   function c(y) {
     u.call(this, "digest"), this._hash = y;
   }
@@ -12863,7 +12865,7 @@ function requireLegacy() {
   if (hasRequiredLegacy)
     return legacy;
   hasRequiredLegacy = 1;
-  var e = inherits_browserExports, n = requireSafeBuffer().Buffer, o = requireCipherBase(), d = n.alloc(128), u = 64;
+  var e = requireInherits_browser(), n = requireSafeBuffer().Buffer, o = requireCipherBase(), d = n.alloc(128), u = 64;
   function c(y, I) {
     o.call(this, "digest"), typeof I == "string" && (I = n.from(I)), this._alg = y, this._key = I, I.length > u ? I = y(I) : I.length < u && (I = n.concat([I, d], u));
     for (var M = this._ipad = n.allocUnsafe(u), O = this._opad = n.allocUnsafe(u), D = 0; D < u; D++)
@@ -12892,7 +12894,7 @@ function requireBrowser$8() {
   if (hasRequiredBrowser$8)
     return browser$a;
   hasRequiredBrowser$8 = 1;
-  var e = inherits_browserExports, n = requireLegacy(), o = requireCipherBase(), d = requireSafeBuffer().Buffer, u = requireMd5(), c = requireRipemd160(), y = requireSha_js(), I = d.alloc(128);
+  var e = requireInherits_browser(), n = requireLegacy(), o = requireCipherBase(), d = requireSafeBuffer().Buffer, u = requireMd5(), c = requireRipemd160(), y = requireSha_js(), I = d.alloc(128);
   function M(O, D) {
     o.call(this, "digest"), typeof D == "string" && (D = d.from(D));
     var H = O === "sha512" || O === "sha384" ? 128 : 64;
@@ -14020,7 +14022,7 @@ function requireDes$1() {
   if (hasRequiredDes$1)
     return des;
   hasRequiredDes$1 = 1;
-  var e = minimalisticAssert$1, n = inherits_browserExports, o = requireUtils$2(), d = requireCipher();
+  var e = minimalisticAssert$1, n = requireInherits_browser(), o = requireUtils$2(), d = requireCipher();
   function u() {
     this.tmp = new Array(2), this.keys = null;
   }
@@ -14096,7 +14098,7 @@ function requireCbc$1() {
   if (hasRequiredCbc$1)
     return cbc$1;
   hasRequiredCbc$1 = 1;
-  var e = minimalisticAssert$1, n = inherits_browserExports, o = {};
+  var e = minimalisticAssert$1, n = requireInherits_browser(), o = {};
   function d(c) {
     e.equal(c.length, 8, "Invalid IV length"), this.iv = new Array(8);
     for (var y = 0; y < this.iv.length; y++)
@@ -14140,7 +14142,7 @@ function requireEde() {
   if (hasRequiredEde)
     return ede;
   hasRequiredEde = 1;
-  var e = minimalisticAssert$1, n = inherits_browserExports, o = requireCipher(), d = requireDes$1();
+  var e = minimalisticAssert$1, n = requireInherits_browser(), o = requireCipher(), d = requireDes$1();
   function u(y, I) {
     e.equal(I.length, 24, "Invalid key length");
     var M = I.slice(0, 8), O = I.slice(8, 16), D = I.slice(16, 24);
@@ -14175,7 +14177,7 @@ function requireBrowserifyDes() {
   if (hasRequiredBrowserifyDes)
     return browserifyDes;
   hasRequiredBrowserifyDes = 1;
-  var e = requireCipherBase(), n = requireDes(), o = inherits_browserExports, d = requireSafeBuffer().Buffer, u = {
+  var e = requireCipherBase(), n = requireDes(), o = requireInherits_browser(), d = requireSafeBuffer().Buffer, u = {
     "des-ede3-cbc": n.CBC.instantiate(n.EDE),
     "des-ede3": n.EDE,
     "des-ede-cbc": n.CBC.instantiate(n.EDE),
@@ -14677,7 +14679,7 @@ function requireAuthCipher() {
   if (hasRequiredAuthCipher)
     return authCipher;
   hasRequiredAuthCipher = 1;
-  var e = requireAes(), n = requireSafeBuffer().Buffer, o = requireCipherBase(), d = inherits_browserExports, u = requireGhash(), c = requireBufferXor(), y = requireIncr32();
+  var e = requireAes(), n = requireSafeBuffer().Buffer, o = requireCipherBase(), d = requireInherits_browser(), u = requireGhash(), c = requireBufferXor(), y = requireIncr32();
   function I(D, H) {
     var N = 0;
     D.length !== H.length && N++;
@@ -14736,7 +14738,7 @@ function requireStreamCipher() {
   if (hasRequiredStreamCipher)
     return streamCipher;
   hasRequiredStreamCipher = 1;
-  var e = requireAes(), n = requireSafeBuffer().Buffer, o = requireCipherBase(), d = inherits_browserExports;
+  var e = requireAes(), n = requireSafeBuffer().Buffer, o = requireCipherBase(), d = requireInherits_browser();
   function u(c, y, I, M) {
     o.call(this), this._cipher = new e.AES(y), this._prev = n.from(I), this._cache = n.allocUnsafe(0), this._secCache = n.allocUnsafe(0), this._decrypt = M, this._mode = c;
   }
@@ -14777,7 +14779,7 @@ function requireEncrypter() {
   if (hasRequiredEncrypter)
     return encrypter;
   hasRequiredEncrypter = 1;
-  var e = requireModes$1(), n = requireAuthCipher(), o = requireSafeBuffer().Buffer, d = requireStreamCipher(), u = requireCipherBase(), c = requireAes(), y = requireEvp_bytestokey(), I = inherits_browserExports;
+  var e = requireModes$1(), n = requireAuthCipher(), o = requireSafeBuffer().Buffer, d = requireStreamCipher(), u = requireCipherBase(), c = requireAes(), y = requireEvp_bytestokey(), I = requireInherits_browser();
   function M(b, U, $) {
     u.call(this), this._cache = new D(), this._cipher = new c.AES(U), this._prev = o.from($), this._mode = b, this._autopadding = !0;
   }
@@ -14837,7 +14839,7 @@ function requireDecrypter() {
   if (hasRequiredDecrypter)
     return decrypter;
   hasRequiredDecrypter = 1;
-  var e = requireAuthCipher(), n = requireSafeBuffer().Buffer, o = requireModes$1(), d = requireStreamCipher(), u = requireCipherBase(), c = requireAes(), y = requireEvp_bytestokey(), I = inherits_browserExports;
+  var e = requireAuthCipher(), n = requireSafeBuffer().Buffer, o = requireModes$1(), d = requireStreamCipher(), u = requireCipherBase(), c = requireAes(), y = requireEvp_bytestokey(), I = requireInherits_browser();
   function M(b, U, $) {
     u.call(this), this._cache = new O(), this._last = void 0, this._cipher = new c.AES(U), this._prev = n.from($), this._mode = b, this._autopadding = !0;
   }
@@ -20334,7 +20336,7 @@ function requireShort$1() {
   if (hasRequiredShort$1)
     return short$9;
   hasRequiredShort$1 = 1;
-  var e = requireUtils$1(), n = requireBn$3(), o = inherits_browserExports, d = requireBase$2(), u = e.assert;
+  var e = requireUtils$1(), n = requireBn$3(), o = requireInherits_browser(), d = requireBase$2(), u = e.assert;
   function c(M) {
     d.call(this, "short", M), this.a = new n(M.a, 16).toRed(this.red), this.b = new n(M.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(M), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
   }
@@ -20683,7 +20685,7 @@ function requireMont$1() {
   if (hasRequiredMont$1)
     return mont$9;
   hasRequiredMont$1 = 1;
-  var e = requireBn$3(), n = inherits_browserExports, o = requireBase$2(), d = requireUtils$1();
+  var e = requireBn$3(), n = requireInherits_browser(), o = requireBase$2(), d = requireUtils$1();
   function u(y) {
     o.call(this, "mont", y), this.a = new e(y.a, 16).toRed(this.red), this.b = new e(y.b, 16).toRed(this.red), this.i4 = new e(4).toRed(this.red).redInvm(), this.two = new e(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
   }
@@ -20740,7 +20742,7 @@ function requireEdwards$1() {
   if (hasRequiredEdwards$1)
     return edwards$9;
   hasRequiredEdwards$1 = 1;
-  var e = requireUtils$1(), n = requireBn$3(), o = inherits_browserExports, d = requireBase$2(), u = e.assert;
+  var e = requireUtils$1(), n = requireBn$3(), o = requireInherits_browser(), d = requireBase$2(), u = e.assert;
   function c(I) {
     this.twisted = (I.a | 0) !== 1, this.mOneA = this.twisted && (I.a | 0) === -1, this.extended = this.mOneA, d.call(this, "edwards", I), this.a = new n(I.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new n(I.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new n(I.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), u(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (I.c | 0) === 1;
   }
@@ -20856,7 +20858,7 @@ function requireCurve$1() {
     n.base = requireBase$2(), n.short = requireShort$1(), n.mont = requireMont$1(), n.edwards = requireEdwards$1();
   }(curve$9)), curve$9;
 }
-var curves$p = {}, hash$b = {}, utils$28 = {}, assert$1s = minimalisticAssert$1, inherits$r = inherits_browserExports;
+var curves$p = {}, hash$b = {}, utils$28 = {}, assert$1s = minimalisticAssert$1, inherits$r = requireInherits_browser();
 utils$28.inherits = inherits$r;
 function isSurrogatePair(e, n) {
   return (e.charCodeAt(n) & 64512) !== 55296 || n < 0 || n + 1 >= e.length ? !1 : (e.charCodeAt(n + 1) & 64512) === 56320;
@@ -24506,7 +24508,7 @@ function requireReporter() {
   if (hasRequiredReporter)
     return reporter;
   hasRequiredReporter = 1;
-  const e = inherits_browserExports;
+  const e = requireInherits_browser();
   function n(d) {
     this._reporterState = {
       obj: null,
@@ -24572,7 +24574,7 @@ function requireBuffer() {
   if (hasRequiredBuffer)
     return buffer;
   hasRequiredBuffer = 1;
-  const e = inherits_browserExports, n = requireReporter().Reporter, o = requireSafer().Buffer;
+  const e = requireInherits_browser(), n = requireReporter().Reporter, o = requireSafer().Buffer;
   function d(c, y) {
     if (n.call(this, y), !o.isBuffer(c)) {
       this.error("Input not Buffer");
@@ -25002,7 +25004,7 @@ function requireDer$1() {
   if (hasRequiredDer$1)
     return der_1$1;
   hasRequiredDer$1 = 1;
-  const e = inherits_browserExports, n = requireSafer().Buffer, o = requireNode(), d = requireDer$2();
+  const e = requireInherits_browser(), n = requireSafer().Buffer, o = requireNode(), d = requireDer$2();
   function u(M) {
     this.enc = "der", this.name = M.name, this.entity = M, this.tree = new c(), this.tree._init(M.body);
   }
@@ -25160,7 +25162,7 @@ function requirePem$1() {
   if (hasRequiredPem$1)
     return pem$1;
   hasRequiredPem$1 = 1;
-  const e = inherits_browserExports, n = requireDer$1();
+  const e = requireInherits_browser(), n = requireDer$1();
   function o(d) {
     n.call(this, d), this.enc = "pem";
   }
@@ -25184,7 +25186,7 @@ function requireDer() {
   if (hasRequiredDer)
     return der_1;
   hasRequiredDer = 1;
-  const e = inherits_browserExports, n = requireBn$2(), o = requireBuffer().DecoderBuffer, d = requireNode(), u = requireDer$2();
+  const e = requireInherits_browser(), n = requireBn$2(), o = requireBuffer().DecoderBuffer, d = requireNode(), u = requireDer$2();
   function c(O) {
     this.enc = "der", this.name = O.name, this.entity = O, this.tree = new y(), this.tree._init(O.body);
   }
@@ -25359,7 +25361,7 @@ function requirePem() {
   if (hasRequiredPem)
     return pem;
   hasRequiredPem = 1;
-  const e = inherits_browserExports, n = requireSafer().Buffer, o = requireDer();
+  const e = requireInherits_browser(), n = requireSafer().Buffer, o = requireDer();
   function d(u) {
     o.call(this, u), this.enc = "pem";
   }
@@ -25398,7 +25400,7 @@ function requireDecoders() {
 var hasRequiredApi;
 function requireApi() {
   return hasRequiredApi || (hasRequiredApi = 1, function(e) {
-    const n = requireEncoders(), o = requireDecoders(), d = inherits_browserExports, u = e;
+    const n = requireEncoders(), o = requireDecoders(), d = requireInherits_browser(), u = e;
     u.define = function(I, M) {
       return new c(I, M);
     };
@@ -25887,7 +25889,7 @@ function requireBrowser$3() {
   if (hasRequiredBrowser$3)
     return browser$5;
   hasRequiredBrowser$3 = 1;
-  var e = requireSafeBuffer().Buffer, n = requireBrowser$9(), o = requireReadableBrowser(), d = inherits_browserExports, u = requireSign(), c = requireVerify(), y = require$$6;
+  var e = requireSafeBuffer().Buffer, n = requireBrowser$9(), o = requireReadableBrowser(), d = requireInherits_browser(), u = requireSign(), c = requireVerify(), y = require$$6;
   Object.keys(y).forEach(function(H) {
     y[H].id = e.from(y[H].id, "hex"), y[H.toLowerCase()] = y[H];
   });
@@ -27414,7 +27416,7 @@ function requireShort() {
   if (hasRequiredShort)
     return short$8;
   hasRequiredShort = 1;
-  var e = requireUtils(), n = requireBn$1(), o = inherits_browserExports, d = requireBase(), u = e.assert;
+  var e = requireUtils(), n = requireBn$1(), o = requireInherits_browser(), d = requireBase(), u = e.assert;
   function c(M) {
     d.call(this, "short", M), this.a = new n(M.a, 16).toRed(this.red), this.b = new n(M.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(M), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
   }
@@ -27763,7 +27765,7 @@ function requireMont() {
   if (hasRequiredMont)
     return mont$8;
   hasRequiredMont = 1;
-  var e = requireBn$1(), n = inherits_browserExports, o = requireBase(), d = requireUtils();
+  var e = requireBn$1(), n = requireInherits_browser(), o = requireBase(), d = requireUtils();
   function u(y) {
     o.call(this, "mont", y), this.a = new e(y.a, 16).toRed(this.red), this.b = new e(y.b, 16).toRed(this.red), this.i4 = new e(4).toRed(this.red).redInvm(), this.two = new e(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
   }
@@ -27820,7 +27822,7 @@ function requireEdwards() {
   if (hasRequiredEdwards)
     return edwards$8;
   hasRequiredEdwards = 1;
-  var e = requireUtils(), n = requireBn$1(), o = inherits_browserExports, d = requireBase(), u = e.assert;
+  var e = requireUtils(), n = requireBn$1(), o = requireInherits_browser(), d = requireBase(), u = e.assert;
   function c(I) {
     this.twisted = (I.a | 0) !== 1, this.mOneA = this.twisted && (I.a | 0) === -1, this.extended = this.mOneA, d.call(this, "edwards", I), this.a = new n(I.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new n(I.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new n(I.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), u(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (I.c | 0) === 1;
   }
@@ -44002,7 +44004,7 @@ BasePoint$8.prototype.dblp = function(n) {
     o = o.dbl();
   return o;
 };
-var utils$1V = utils$1X, BN$_ = bnExports$7, inherits$q = inherits_browserExports, Base$n = base$9, assert$1l = utils$1V.assert;
+var utils$1V = utils$1X, BN$_ = bnExports$7, inherits$q = requireInherits_browser(), Base$n = base$9, assert$1l = utils$1V.assert;
 function ShortCurve$8(e) {
   Base$n.call(this, "short", e), this.a = new BN$_(e.a, 16).toRed(this.red), this.b = new BN$_(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -44386,7 +44388,7 @@ JPoint$8.prototype.inspect = function() {
 JPoint$8.prototype.isInfinity = function() {
   return this.z.cmpn(0) === 0;
 };
-var BN$Z = bnExports$7, inherits$p = inherits_browserExports, Base$m = base$9, utils$1U = utils$1X;
+var BN$Z = bnExports$7, inherits$p = requireInherits_browser(), Base$m = base$9, utils$1U = utils$1X;
 function MontCurve$7(e) {
   Base$m.call(this, "mont", e), this.a = new BN$Z(e.a, 16).toRed(this.red), this.b = new BN$Z(e.b, 16).toRed(this.red), this.i4 = new BN$Z(4).toRed(this.red).redInvm(), this.two = new BN$Z(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -44456,7 +44458,7 @@ Point$n.prototype.normalize = function() {
 Point$n.prototype.getX = function() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$1T = utils$1X, BN$Y = bnExports$7, inherits$o = inherits_browserExports, Base$l = base$9, assert$1k = utils$1T.assert;
+var utils$1T = utils$1X, BN$Y = bnExports$7, inherits$o = requireInherits_browser(), Base$l = base$9, assert$1k = utils$1T.assert;
 function EdwardsCurve$7(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base$l.call(this, "edwards", e), this.a = new BN$Y(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$Y(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$Y(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$1k(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -51620,7 +51622,7 @@ BasePoint$7.prototype.dblp = function(n) {
     o = o.dbl();
   return o;
 };
-var utils$1J = utils$1L, BN$S = bnExports$6, inherits$n = inherits_browserExports, Base$k = base$8, assert$1a = utils$1J.assert;
+var utils$1J = utils$1L, BN$S = bnExports$6, inherits$n = requireInherits_browser(), Base$k = base$8, assert$1a = utils$1J.assert;
 function ShortCurve$7(e) {
   Base$k.call(this, "short", e), this.a = new BN$S(e.a, 16).toRed(this.red), this.b = new BN$S(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -52004,7 +52006,7 @@ JPoint$7.prototype.inspect = function() {
 JPoint$7.prototype.isInfinity = function() {
   return this.z.cmpn(0) === 0;
 };
-var BN$R = bnExports$6, inherits$m = inherits_browserExports, Base$j = base$8, utils$1I = utils$1L;
+var BN$R = bnExports$6, inherits$m = requireInherits_browser(), Base$j = base$8, utils$1I = utils$1L;
 function MontCurve$6(e) {
   Base$j.call(this, "mont", e), this.a = new BN$R(e.a, 16).toRed(this.red), this.b = new BN$R(e.b, 16).toRed(this.red), this.i4 = new BN$R(4).toRed(this.red).redInvm(), this.two = new BN$R(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -52074,7 +52076,7 @@ Point$k.prototype.normalize = function() {
 Point$k.prototype.getX = function() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$1H = utils$1L, BN$Q = bnExports$6, inherits$l = inherits_browserExports, Base$i = base$8, assert$19 = utils$1H.assert;
+var utils$1H = utils$1L, BN$Q = bnExports$6, inherits$l = requireInherits_browser(), Base$i = base$8, assert$19 = utils$1H.assert;
 function EdwardsCurve$6(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base$i.call(this, "edwards", e), this.a = new BN$Q(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$Q(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$Q(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$19(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -95433,7 +95435,7 @@ BasePoint$6.prototype.dblp = function e(n) {
     o = o.dbl();
   return o;
 };
-var utils$1w = utils$1y, BN$K = bnExports$5, inherits$k = inherits_browserExports, Base$h = base$7, assert$$ = utils$1w.assert;
+var utils$1w = utils$1y, BN$K = bnExports$5, inherits$k = requireInherits_browser(), Base$h = base$7, assert$$ = utils$1w.assert;
 function ShortCurve$6(e) {
   Base$h.call(this, "short", e), this.a = new BN$K(e.a, 16).toRed(this.red), this.b = new BN$K(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -95817,7 +95819,7 @@ JPoint$6.prototype.inspect = function e() {
 JPoint$6.prototype.isInfinity = function e() {
   return this.z.cmpn(0) === 0;
 };
-var BN$J = bnExports$5, inherits$j = inherits_browserExports, Base$g = base$7, utils$1v = utils$1y;
+var BN$J = bnExports$5, inherits$j = requireInherits_browser(), Base$g = base$7, utils$1v = utils$1y;
 function MontCurve$5(e) {
   Base$g.call(this, "mont", e), this.a = new BN$J(e.a, 16).toRed(this.red), this.b = new BN$J(e.b, 16).toRed(this.red), this.i4 = new BN$J(4).toRed(this.red).redInvm(), this.two = new BN$J(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -95887,7 +95889,7 @@ Point$h.prototype.normalize = function e() {
 Point$h.prototype.getX = function e() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$1u = utils$1y, BN$I = bnExports$5, inherits$i = inherits_browserExports, Base$f = base$7, assert$_ = utils$1u.assert;
+var utils$1u = utils$1y, BN$I = bnExports$5, inherits$i = requireInherits_browser(), Base$f = base$7, assert$_ = utils$1u.assert;
 function EdwardsCurve$5(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base$f.call(this, "edwards", e), this.a = new BN$I(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$I(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$I(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$_(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -108659,7 +108661,7 @@ BasePoint$5.prototype.dblp = function e(n) {
     o = o.dbl();
   return o;
 };
-var utils$1j = utils$1l, BN$C = bnExports$4, inherits$g = inherits_browserExports, Base$e = base$6, assert$Q = utils$1j.assert;
+var utils$1j = utils$1l, BN$C = bnExports$4, inherits$g = requireInherits_browser(), Base$e = base$6, assert$Q = utils$1j.assert;
 function ShortCurve$5(e) {
   Base$e.call(this, "short", e), this.a = new BN$C(e.a, 16).toRed(this.red), this.b = new BN$C(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -109043,7 +109045,7 @@ JPoint$5.prototype.inspect = function e() {
 JPoint$5.prototype.isInfinity = function e() {
   return this.z.cmpn(0) === 0;
 };
-var BN$B = bnExports$4, inherits$f = inherits_browserExports, Base$d = base$6, utils$1i = utils$1l;
+var BN$B = bnExports$4, inherits$f = requireInherits_browser(), Base$d = base$6, utils$1i = utils$1l;
 function MontCurve$4(e) {
   Base$d.call(this, "mont", e), this.a = new BN$B(e.a, 16).toRed(this.red), this.b = new BN$B(e.b, 16).toRed(this.red), this.i4 = new BN$B(4).toRed(this.red).redInvm(), this.two = new BN$B(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -109113,7 +109115,7 @@ Point$e.prototype.normalize = function e() {
 Point$e.prototype.getX = function e() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$1h = utils$1l, BN$A = bnExports$4, inherits$e = inherits_browserExports, Base$c = base$6, assert$P = utils$1h.assert;
+var utils$1h = utils$1l, BN$A = bnExports$4, inherits$e = requireInherits_browser(), Base$c = base$6, assert$P = utils$1h.assert;
 function EdwardsCurve$4(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base$c.call(this, "edwards", e), this.a = new BN$A(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$A(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$A(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$P(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -129224,7 +129226,7 @@ BasePoint$4.prototype.dblp = function e(n) {
     o = o.dbl();
   return o;
 };
-var utils$14 = utils$16, BN$u = bnExports$3, inherits$c = inherits_browserExports, Base$b = base$5, assert$F = utils$14.assert;
+var utils$14 = utils$16, BN$u = bnExports$3, inherits$c = requireInherits_browser(), Base$b = base$5, assert$F = utils$14.assert;
 function ShortCurve$4(e) {
   Base$b.call(this, "short", e), this.a = new BN$u(e.a, 16).toRed(this.red), this.b = new BN$u(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -129608,7 +129610,7 @@ JPoint$4.prototype.inspect = function e() {
 JPoint$4.prototype.isInfinity = function e() {
   return this.z.cmpn(0) === 0;
 };
-var BN$t = bnExports$3, inherits$b = inherits_browserExports, Base$a = base$5, utils$13 = utils$16;
+var BN$t = bnExports$3, inherits$b = requireInherits_browser(), Base$a = base$5, utils$13 = utils$16;
 function MontCurve$3(e) {
   Base$a.call(this, "mont", e), this.a = new BN$t(e.a, 16).toRed(this.red), this.b = new BN$t(e.b, 16).toRed(this.red), this.i4 = new BN$t(4).toRed(this.red).redInvm(), this.two = new BN$t(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -129678,7 +129680,7 @@ Point$b.prototype.normalize = function e() {
 Point$b.prototype.getX = function e() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$12 = utils$16, BN$s = bnExports$3, inherits$a = inherits_browserExports, Base$9 = base$5, assert$E = utils$12.assert;
+var utils$12 = utils$16, BN$s = bnExports$3, inherits$a = requireInherits_browser(), Base$9 = base$5, assert$E = utils$12.assert;
 function EdwardsCurve$3(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base$9.call(this, "edwards", e), this.a = new BN$s(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$s(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$s(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$E(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -160313,7 +160315,7 @@ BasePoint$3.prototype.dblp = function e(n) {
     o = o.dbl();
   return o;
 };
-var utils$T = utils$V, BN$m = bnExports$2, inherits$9 = inherits_browserExports, Base$8 = base$3, assert$u = utils$T.assert;
+var utils$T = utils$V, BN$m = bnExports$2, inherits$9 = requireInherits_browser(), Base$8 = base$3, assert$u = utils$T.assert;
 function ShortCurve$3(e) {
   Base$8.call(this, "short", e), this.a = new BN$m(e.a, 16).toRed(this.red), this.b = new BN$m(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -160697,7 +160699,7 @@ JPoint$3.prototype.inspect = function e() {
 JPoint$3.prototype.isInfinity = function e() {
   return this.z.cmpn(0) === 0;
 };
-var BN$l = bnExports$2, inherits$8 = inherits_browserExports, Base$7 = base$3, utils$S = utils$V;
+var BN$l = bnExports$2, inherits$8 = requireInherits_browser(), Base$7 = base$3, utils$S = utils$V;
 function MontCurve$2(e) {
   Base$7.call(this, "mont", e), this.a = new BN$l(e.a, 16).toRed(this.red), this.b = new BN$l(e.b, 16).toRed(this.red), this.i4 = new BN$l(4).toRed(this.red).redInvm(), this.two = new BN$l(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -160767,7 +160769,7 @@ Point$8.prototype.normalize = function e() {
 Point$8.prototype.getX = function e() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$R = utils$V, BN$k = bnExports$2, inherits$7 = inherits_browserExports, Base$6 = base$3, assert$t = utils$R.assert;
+var utils$R = utils$V, BN$k = bnExports$2, inherits$7 = requireInherits_browser(), Base$6 = base$3, assert$t = utils$R.assert;
 function EdwardsCurve$2(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base$6.call(this, "edwards", e), this.a = new BN$k(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$k(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$k(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$t(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -168689,7 +168691,7 @@ const _hoisted_1$h = { class: "form-control" }, _hoisted_2$h = /* @__PURE__ */ c
     params: String
   },
   setup(e, { expose: n }) {
-    const o = e, d = ref(""), u = ref("fx1538hzlrk2ax6nz35068dxtf73kjkcscpuedc7j"), c = ref(""), y = ref(""), I = computed(() => {
+    const o = e, d = ref(""), u = ref(""), c = ref(""), y = ref(""), I = computed(() => {
       const U = new TokenUnitConverter(o.metadata);
       return [
         {
@@ -203562,7 +203564,7 @@ BasePoint$1.prototype.dblp = function e(n) {
     o = o.dbl();
   return o;
 };
-var utils$H = utils$J, BN$e = bnExports$1, inherits$6 = inherits_browserExports, Base$5 = base$1, assert$i = utils$H.assert;
+var utils$H = utils$J, BN$e = bnExports$1, inherits$6 = requireInherits_browser(), Base$5 = base$1, assert$i = utils$H.assert;
 function ShortCurve$1(e) {
   Base$5.call(this, "short", e), this.a = new BN$e(e.a, 16).toRed(this.red), this.b = new BN$e(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -203946,7 +203948,7 @@ JPoint$1.prototype.inspect = function e() {
 JPoint$1.prototype.isInfinity = function e() {
   return this.z.cmpn(0) === 0;
 };
-var BN$d = bnExports$1, inherits$5 = inherits_browserExports, Base$4 = base$1, utils$G = utils$J;
+var BN$d = bnExports$1, inherits$5 = requireInherits_browser(), Base$4 = base$1, utils$G = utils$J;
 function MontCurve$1(e) {
   Base$4.call(this, "mont", e), this.a = new BN$d(e.a, 16).toRed(this.red), this.b = new BN$d(e.b, 16).toRed(this.red), this.i4 = new BN$d(4).toRed(this.red).redInvm(), this.two = new BN$d(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -204016,7 +204018,7 @@ Point$4.prototype.normalize = function e() {
 Point$4.prototype.getX = function e() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$F = utils$J, BN$c = bnExports$1, inherits$4 = inherits_browserExports, Base$3 = base$1, assert$h = utils$F.assert;
+var utils$F = utils$J, BN$c = bnExports$1, inherits$4 = requireInherits_browser(), Base$3 = base$1, assert$h = utils$F.assert;
 function EdwardsCurve$1(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base$3.call(this, "edwards", e), this.a = new BN$c(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$c(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$c(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$h(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -249882,7 +249884,7 @@ BasePoint.prototype.dblp = function e(n) {
     o = o.dbl();
   return o;
 };
-var utils$u = utils$w, BN$6 = bnExports, inherits$3 = inherits_browserExports, Base$2 = base, assert$7 = utils$u.assert;
+var utils$u = utils$w, BN$6 = bnExports, inherits$3 = requireInherits_browser(), Base$2 = base, assert$7 = utils$u.assert;
 function ShortCurve(e) {
   Base$2.call(this, "short", e), this.a = new BN$6(e.a, 16).toRed(this.red), this.b = new BN$6(e.b, 16).toRed(this.red), this.tinv = this.two.redInvm(), this.zeroA = this.a.fromRed().cmpn(0) === 0, this.threeA = this.a.fromRed().sub(this.p).cmpn(-3) === 0, this.endo = this._getEndomorphism(e), this._endoWnafT1 = new Array(4), this._endoWnafT2 = new Array(4);
 }
@@ -250266,7 +250268,7 @@ JPoint.prototype.inspect = function e() {
 JPoint.prototype.isInfinity = function e() {
   return this.z.cmpn(0) === 0;
 };
-var BN$5 = bnExports, inherits$2 = inherits_browserExports, Base$1 = base, utils$t = utils$w;
+var BN$5 = bnExports, inherits$2 = requireInherits_browser(), Base$1 = base, utils$t = utils$w;
 function MontCurve(e) {
   Base$1.call(this, "mont", e), this.a = new BN$5(e.a, 16).toRed(this.red), this.b = new BN$5(e.b, 16).toRed(this.red), this.i4 = new BN$5(4).toRed(this.red).redInvm(), this.two = new BN$5(2).toRed(this.red), this.a24 = this.i4.redMul(this.a.redAdd(this.two));
 }
@@ -250336,7 +250338,7 @@ Point$1.prototype.normalize = function e() {
 Point$1.prototype.getX = function e() {
   return this.normalize(), this.x.fromRed();
 };
-var utils$s = utils$w, BN$4 = bnExports, inherits$1 = inherits_browserExports, Base = base, assert$6 = utils$s.assert;
+var utils$s = utils$w, BN$4 = bnExports, inherits$1 = requireInherits_browser(), Base = base, assert$6 = utils$s.assert;
 function EdwardsCurve(e) {
   this.twisted = (e.a | 0) !== 1, this.mOneA = this.twisted && (e.a | 0) === -1, this.extended = this.mOneA, Base.call(this, "edwards", e), this.a = new BN$4(e.a, 16).umod(this.red.m), this.a = this.a.toRed(this.red), this.c = new BN$4(e.c, 16).toRed(this.red), this.c2 = this.c.redSqr(), this.d = new BN$4(e.d, 16).toRed(this.red), this.dd = this.d.redAdd(this.d), assert$6(!this.twisted || this.c.fromRed().cmpn(1) === 0), this.oneC = (e.c | 0) === 1;
 }
@@ -312878,7 +312880,7 @@ const _334 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
     },
     osmosis: {
       concentratedliquidity: {
-        v1beta1: new (await import("./query.lcd-5554cfaf.js")).LCDQueryClient({
+        v1beta1: new (await import("./query.lcd-ed1729dd.js")).LCDQueryClient({
           requestClient: n
         })
       },
@@ -313003,7 +313005,7 @@ const _334 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
     },
     osmosis: {
       concentratedliquidity: {
-        v1beta1: (await import("./query.rpc.Query-214ee7a3.js")).createRpcQueryExtension(o)
+        v1beta1: (await import("./query.rpc.Query-147293f8.js")).createRpcQueryExtension(o)
       },
       cosmwasmpool: {
         v1beta1: (await Promise.resolve().then(() => _307)).createRpcQueryExtension(o)
@@ -313079,7 +313081,7 @@ const _334 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   },
   osmosis: {
     concentratedliquidity: {
-      v1beta1: new (await import("./tx.rpc.msg-2fa7ffaa.js")).MsgClientImpl(e)
+      v1beta1: new (await import("./tx.rpc.msg-18bca5ea.js")).MsgClientImpl(e)
     },
     gamm: {
       poolmodels: {
